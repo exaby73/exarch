@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pawani/core/di/injection.dart';
 import 'package:pawani/core/routes/app_router.dart';
+import 'package:pawani/state/providers.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
-  runApp(const MainApp());
+  runApp(
+    MultiBlocProvider(
+      providers: providers,
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
